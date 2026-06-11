@@ -12,7 +12,7 @@
    background:#0b0e14;color:#e6e9ef;display:flex;justify-content:center;padding:32px 16px}
  .wrap{width:100%;max-width:780px}
  h2{font-size:1.05rem;margin:30px 0 6px}
- .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+ .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
  .card{background:#141925;border:1px solid #222a3a;border-radius:14px;padding:20px}
  .val{font-size:1.9rem;font-weight:700;letter-spacing:-.02em}
  .pos{color:#46d369}.neg{color:#f6685e}
@@ -20,8 +20,9 @@
  .alert{background:#3a1620;color:#ff7a7a;border:1px solid #5c2230;border-radius:12px;
    padding:14px 18px;margin-bottom:18px;font-weight:600}
  .clock{background:#141925;border:1px solid #222a3a;border-radius:12px;padding:12px 18px;
-   margin-bottom:14px;font-size:.95rem;color:#aeb6c6}
+   margin-bottom:6px;font-size:.95rem;color:#aeb6c6}
  .clock b{color:#fff;font-weight:700}
+ .synced{color:#6b7488;font-size:.8rem;margin-bottom:16px;padding-left:4px}
  .tbox{max-height:230px;overflow-y:auto;margin-top:8px;border:1px solid #222a3a;border-radius:12px}
  table{width:100%;border-collapse:collapse;font-size:.92rem}
  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #1c2230}
@@ -31,6 +32,7 @@
  .tag{font-size:.72rem;padding:2px 9px;border-radius:999px}
  .tag.open{background:#0f2a3a;color:#4aa8e0}
  .tag.closed{background:#1c2230;color:#9aa3b8}
+ .tag.queued{background:#3a2e0f;color:#e0b341}
  .log{max-height:140px;overflow-y:auto;margin-top:8px;background:#0f131c;
    border:1px solid #222a3a;border-radius:12px}
  .log .row{display:flex;justify-content:space-between;gap:12px;padding:8px 13px;
@@ -40,8 +42,9 @@
 <body><div class="wrap">
  
  <div class="clock" id="clock">⏳ …</div>
- <div class="grid"><div class="card"><div class="val">🟢 LIVE</div><div class="lbl">Status</div></div><div class="card"><div class="val">$674</div><div class="lbl">Account</div></div><div class="card"><div class="val neg">$-0.61</div><div class="lbl">Open P&amp;L</div></div><div class="card"><div class="val">7</div><div class="lbl">Open positions</div></div><div class="card"><div class="val">2</div><div class="lbl">Days live</div></div><div class="card"><div class="val">1</div><div class="lbl">Closed trades</div></div></div>
- <h2>Trades</h2><div class='tbox'><table><tr><th>Symbol</th><th>Status</th><th class='r'>P&amp;L</th><th>When</th></tr><tr><td><b>AMD</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.09 · -0.6%</span></td><td>held</td></tr><tr><td><b>CVS</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="pos">$+0.13 · +1.0%</span></td><td>held</td></tr><tr><td><b>DHR</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.26 · -1.8%</span></td><td>opened Jun 10</td></tr><tr><td><b>EOG</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.14 · -1.1%</span></td><td>held</td></tr><tr><td><b>MO</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.02 · -0.1%</span></td><td>held</td></tr><tr><td><b>SMH</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="pos">$+0.02 · +0.2%</span></td><td>opened Jun 10</td></tr><tr><td><b>UPS</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.26 · -1.9%</span></td><td>opened Jun 10</td></tr><tr><td><b>IWM</b></td><td><span class="tag closed">✓ closed</span></td><td class='r'>—</td><td>closed Jun 10</td></tr></table></div>
+ <div class="synced">data synced Jun 11 13:13 UTC · 1 order(s) queued · refreshes every run</div>
+ <div class="grid"><div class="card"><div class="val">🟢 LIVE</div><div class="lbl">Status</div></div><div class="card"><div class="val">$674</div><div class="lbl">Account</div></div><div class="card"><div class="val">$566</div><div class="lbl">Cash</div></div><div class="card"><div class="val neg">$-0.61</div><div class="lbl">Open P&amp;L</div></div><div class="card"><div class="val">7</div><div class="lbl">Open positions</div></div><div class="card"><div class="val">1</div><div class="lbl">Queued orders</div></div><div class="card"><div class="val">2</div><div class="lbl">Days live</div></div><div class="card"><div class="val">1</div><div class="lbl">Closed trades</div></div></div>
+ <h2>Trades</h2><div class='tbox'><table><tr><th>Symbol</th><th>Status</th><th class='r'>P&amp;L</th><th>When</th></tr><tr><td><b>IWM</b></td><td><span class="tag queued">⏳ queued</span></td><td class='r'>@ $283.19</td><td>awaiting open</td></tr><tr><td><b>AMD</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.09 · -0.6%</span></td><td>held</td></tr><tr><td><b>CVS</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="pos">$+0.13 · +1.0%</span></td><td>held</td></tr><tr><td><b>DHR</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.26 · -1.8%</span></td><td>opened Jun 10</td></tr><tr><td><b>EOG</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.14 · -1.1%</span></td><td>held</td></tr><tr><td><b>MO</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.02 · -0.1%</span></td><td>held</td></tr><tr><td><b>SMH</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="pos">$+0.02 · +0.2%</span></td><td>opened Jun 10</td></tr><tr><td><b>UPS</b></td><td><span class="tag open">● open</span></td><td class='r'><span class="neg">$-0.26 · -1.9%</span></td><td>opened Jun 10</td></tr><tr><td><b>IWM</b></td><td><span class="tag closed">✓ closed</span></td><td class='r'>—</td><td>closed Jun 10</td></tr></table></div>
  <h2>Activity log</h2><div class="log"><div class="row"><span>BOUGHT <b>IWM</b> <span class="when">· entry</span></span><span class="when">2026-06-11 12:34</span></div><div class="row"><span>BOUGHT <b>IWM</b> <span class="when">· entry</span></span><span class="when">2026-06-10 22:18</span></div><div class="row"><span>BOUGHT <b>IWM</b> <span class="when">· entry</span></span><span class="when">2026-06-10 21:23</span></div><div class="row"><span>BOUGHT <b>IWM</b> <span class="when">· entry</span></span><span class="when">2026-06-10 20:22</span></div><div class="row"><span>BOUGHT <b>SMH</b> <span class="when">· entry</span></span><span class="when">2026-06-10 19:25</span></div><div class="row"><span>SOLD <b>IWM</b> <span class="when">· stop</span></span><span class="when">2026-06-10 19:24</span></div><div class="row"><span>BOUGHT <b>UPS</b> <span class="when">· entry</span></span><span class="when">2026-06-10 13:49</span></div><div class="row"><span>BOUGHT <b>DHR</b> <span class="when">· entry</span></span><span class="when">2026-06-10 13:48</span></div></div>
 </div><script>
 (function(){
